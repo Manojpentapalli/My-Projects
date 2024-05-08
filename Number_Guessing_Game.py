@@ -36,6 +36,8 @@ def game(): # recursion occurs till the chances remaining arw zero (0) and displ
     global i
     while i>=0:
         compare()
+        if res!="correct guess!":
+            print(f"You have {i} chances to guess.")
         if i>0:
             guess_again()
             i-=1
@@ -65,21 +67,22 @@ def go_again(): # asks user if they want to play again and resets the game if us
 while not again:
     
     print(logo)
-    
+    print("Welcome to the game of Number Guessing.\nI'm thinking of a number, can you guess it? ")
     computer = random.randint(1,100) # asssigns a random integer between 1 and 100 to the computer
     #print(computer)
     
-    level=input("select the level of difficulty, easy or hard: ").lower()
-    user=int(input("Guess the number between 1 and 100 chosen by the computer: "))
+    level=input("Easy level have 10 chances to guess and Hard level have 5.\nselect the level of difficulty, type 'easy' or 'hard': ").lower()
+    user=int(input("Guess the number (between 1 and 100): "))
     
     if user in list(range(1,101)): # checks whether the user input is between 1 and 100
         if level=="easy":
             i=9
             game()
-        
+            
         elif level=="hard":
             i=4
             game()
+            
     else:
         print("Guess out of range.")
 
