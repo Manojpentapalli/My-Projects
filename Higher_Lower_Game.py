@@ -31,13 +31,15 @@ while not go_again:
         
         if user=="a":
             if data[x]["follower_count"] > data[y]["follower_count"]:
-                count+=1 
+                count+=1
+                print(f"correct. your current score is {count}")
             else:
                 game=True
                 
         elif user=="b":
             if data[y]["follower_count"] > data[x]["follower_count"]:
-                count+=1 
+                count+=1
+                print(f"correct. your current score is {count}")
             else:
                 game=True
                 
