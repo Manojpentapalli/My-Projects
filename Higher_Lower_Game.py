@@ -12,12 +12,16 @@ f2=open("H_L_game_art.py",'r')
 from H_L_game_art import logo, vs 
 
 while not go_again:
+
+    w=False
     
     print(logo)
     
     while not game:
         
-        x= random.randint(0,49)
+        if not w:
+            x= random.randint(0,49)
+            w=False
         print(f'who do you think have more followers on instagram \nA - {data[x]["name"]}, a {data[x]["description"]}, from {data[x]["country"]}.')
         
         print(vs)
@@ -33,6 +37,8 @@ while not go_again:
             if data[x]["follower_count"] > data[y]["follower_count"]:
                 count+=1
                 print(f"correct. your current score is {count}")
+                x=y
+                w=True
             else:
                 game=True
                 
@@ -40,12 +46,14 @@ while not go_again:
             if data[y]["follower_count"] > data[x]["follower_count"]:
                 count+=1
                 print(f"correct. your current score is {count}")
+                x=y
+                w=True
             else:
                 game=True
                 
         else:
             game=True
-    
+        
     print("wrong")        
     print(f"your score: {count}")
     
@@ -56,7 +64,4 @@ while not go_again:
         print("\033[H\033[J")
     elif again=="n":
         go_again=True 
-        
-        
-        
         
